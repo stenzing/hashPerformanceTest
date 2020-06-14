@@ -9,8 +9,8 @@ import static sg.test.listcompare.ComparatorLogic.generateList;
 
 public class ListComparator extends JFrame {
 
-    private JTextArea sizeA = new JTextArea("2");
-    private JTextArea sizeB = new JTextArea("ds");
+    private JTextArea sizeA = new JTextArea("3000");
+    private JTextArea sizeB = new JTextArea("200");
     private JComboBox<ComparatorLogic.Choice> listChoose = new JComboBox<>(ComparatorLogic.Choice.values());
     private JTextArea resultSize = new JTextArea();
     private JTextArea computationTime = new JTextArea();
