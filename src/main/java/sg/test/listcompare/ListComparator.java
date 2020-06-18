@@ -9,14 +9,29 @@ import static sg.test.listcompare.ComparatorLogic.generateList;
 
 public class ListComparator extends JFrame {
 
-    private JTextArea sizeA = new JTextArea("3000");
-    private JTextArea sizeB = new JTextArea("200");
+    private JTextField sizeA = new JTextField("3000");
+    private JTextField sizeB = new JTextField("200");
     private JComboBox<ComparatorLogic.Choice> listChoose = new JComboBox<>(ComparatorLogic.Choice.values());
     private JTextArea resultSize = new JTextArea();
     private JTextArea computationTime = new JTextArea();
     private final ComparatorLogic logic = new ComparatorLogic();
 
+    private final InputVerifier numberVerifier = new InputVerifier() {
+        @Override
+        public boolean verify(JComponent input) {
+            String text = ((JTextField) input).getText();
+            try {
+                Integer.parseInt(text);
+            } catch (NumberFormatException e) {
+                return false;
+            }
+            return true;
+        }
+    };
+
     ListComparator(){
+        sizeA.setInputVerifier(numberVerifier);
+        sizeB.setInputVerifier(numberVerifier);
         setLayout(new BorderLayout());
         JButton runButton=new JButton("Run");
         runButton.setPreferredSize(new Dimension(200, 100));
